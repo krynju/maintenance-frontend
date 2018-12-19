@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --progress",
+    "build": "ng build --progress",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod_serve": "ng serve --prod --progress",
+    "prod_build": "ng build --prod --progress"
   },
   "private": true,
   "dependencies": {
