@@ -52,6 +52,15 @@ app.get('/assignments', (req, res) => {
   });
 });
 
+app.get('/users/:code', (req, res) => {
+  connection.execute(
+    `SELECT * FROM KGULINSK."uzytkownicy" WHERE "id_pracownika" = :id`,
+    [req.params['code']]
+  ).then((result) => {
+    res.send(models.User.fromArray(result.rows[0]));
+  });
+});
+
 // /ENDPOINTS ----------------
 
 app.on('dbready', () => {

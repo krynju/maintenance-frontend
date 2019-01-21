@@ -79,9 +79,31 @@ class Assignment {
   }
 }
 
+class User {
+
+  static fromArray(array) {
+    const obj = new Ticket();
+
+    [
+      'id',
+      'level',
+      'type',
+      'firstName',
+      'lastName',
+      'code',
+      'created',
+    ].forEach((name, index) => {
+      obj[name] = array[index];
+    });
+
+    return obj;
+  }
+}
+
 exports = module.exports = {
   Ticket,
   Machine,
   Failure,
   Assignment,
+  User,
 };
