@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prod_serve": "ng serve --prod --progress",
-    "prod_build": "ng build --prod --progress"
+    "prod_build": "ng build --prod --progress",
+    "server": "node server/backend.js"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "core-js": "^2.6.2",
+    "express": "^4.16.4",
+    "oracledb": "^3.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.28"

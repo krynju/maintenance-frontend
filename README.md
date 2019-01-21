@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Backend
+
+To run the backend a few env vars have to be set.
+
+* `ORA_USER`
+* `ORA_PASSWORD`
+* `ORA_CONNECTION`
+
+To connect to the *ora3inf* server, set `ORA_CONNECTION` to `ora3inf` and put the following config in the **Oracle Client configuration file** (see [this](https://oracle.github.io/node-oracledb/doc/api.html#tnsadmin)):
+
+```text
+ora3inf =
+ (DESCRIPTION =
+   (ADDRESS = (PROTOCOL = TCP)(HOST = ora3.elka.pw.edu.pl)(PORT = 1521))
+   (CONNECT_DATA =
+     (SID = ora3inf)
+   )
+ )
+```
+
+Then to run it execute from the root of the project:
+
+```bash
+npm run server
+```
