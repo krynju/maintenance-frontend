@@ -1,0 +1,53 @@
+<mat-toolbar class="fix-nav" color="primary">
+  <button (click)="toggleSidebar()" class="visible-md" mat-icon-button type="button">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <div class="nav-brand">
+    SB Admin Material
+  </div>
+  <form class="hidden-sm" style="margin-left: 20px; margin-top: 5px">
+    <mat-form-field>
+      <input [placeholder]="'Search' | translate" matInput>
+    </mat-form-field>
+  </form>
+  <span class="nav-spacer"></span>
+  <a class="hidden-sm" href="https://github.com/start-javascript/sb-admin-material/archive/master.zip" mat-raised-button
+     style="margin-right: 10px">
+    <mat-icon>cloud_download</mat-icon>
+    {{ 'Download Now' | translate }}
+  </a>
+  <button [matMenuTriggerFor]="language" class="hidden-sm" mat-icon-button>
+    <mat-icon>language</mat-icon>
+  </button>
+  <mat-menu #language="matMenu">
+    <button (click)="changeLang('en')" mat-menu-item>
+      <span>{{ 'English' | translate }}</span>
+    </button>
+    <button (click)="changeLang('fr')" mat-menu-item>
+      <span>{{ 'French' | translate }}</span>
+    </button>
+    <button (click)="changeLang('ur')" mat-menu-item>
+      <span>{{ 'Urdu' | translate }}s</span>
+    </button>
+  </mat-menu>
+  <button [matMenuTriggerFor]="profile" class="hidden-sm" mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #profile="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>{{ 'Profile' | translate }}</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>inbox</mat-icon>
+      <span>{{ 'Inbox' | translate }}</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>{{ 'Settings' | translate }}</span>
+    </button>
+  </mat-menu>
+  <button (click)="onLoggedout()" mat-icon-button>
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>

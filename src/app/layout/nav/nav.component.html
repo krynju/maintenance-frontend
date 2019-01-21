@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer [attr.role]="isHandset ? 'dialog' : 'navigation'"
+               [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches"
+               class="sidenav"
+               fixedInViewport="true">
+    <mat-toolbar color="primary">SB Admin Marerial</mat-toolbar>
+    <mat-nav-list>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/dashboard']" mat-list-item>
+        <mat-icon class="sidenav-icon">dashboard</mat-icon>
+        Dashbard
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/charts']" mat-list-item>
+        <mat-icon class="sidenav-icon">bar_chart</mat-icon>
+        Charts
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/tables']" mat-list-item>
+        <mat-icon class="sidenav-icon">table_chart</mat-icon>
+        Tables
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/forms']" mat-list-item>
+        <mat-icon class="sidenav-icon">input</mat-icon>
+        Forms
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/grid']" mat-list-item>
+        <mat-icon class="sidenav-icon">grid_on</mat-icon>
+        Grid
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/components']" mat-list-item>
+        <mat-icon class="sidenav-icon">code</mat-icon>
+        Components
+      </a>
+      <a [routerLinkActive]="'active'" [routerLink]="['/app/blank-page']" mat-list-item>
+        <mat-icon class="sidenav-icon">insert_drive_file</mat-icon>
+        Black Page
+      </a>
+      <a mat-list-item>
+        <mat-icon class="sidenav-icon">add</mat-icon>
+        Menu
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="fix-nav" color="primary">
+      <button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches" aria-label="Toggle sidenav" mat-icon-button
+              type="button">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-icon class="nav-icon">menu</mat-icon>
+      <span class="nav-spacer"></span>
+      <!--
+      <mat-icon class="nav-icon">person</mat-icon>
+      <span class="nav-spacer"></span>
+      <mat-icon class="nav-icon">notifications</mat-icon>
+      <mat-icon class="nav-icon">apps</mat-icon>
+      <mat-icon class="nav-icon">fullscreen</mat-icon>
+      <mat-icon class="nav-icon">flag</mat-icon>
+      <mat-icon class="nav-icon">search</mat-icon>
+      <mat-icon class="nav-icon">account_circle</mat-icon> -->
+      <a [routerLink]="['/login']" class="topnav-icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
