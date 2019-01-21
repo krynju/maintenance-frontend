@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class PageComponent implements OnInit {
+export class LoginComponent implements OnInit {
   constructor(private router: Router) {
   }
 
@@ -15,6 +15,6 @@ export class PageComponent implements OnInit {
 
   onLogin() {
     localStorage.setItem('isLoggedin', 'true');
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/app/dashboard']);
   }
 }

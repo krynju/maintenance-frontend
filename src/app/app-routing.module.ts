@@ -5,12 +5,7 @@ import {AuthGuard} from './shared/guard/auth.guard';
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', redirectTo: 'app/dashboard'},
   {path: 'login', loadChildren: './login/login.module#LoginModule'},
-  {
-    path: 'app', /*canActivate: [AuthGuard],*/  children: [
-      // {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
-      {path: '', pathMatch: 'prefix', loadChildren: './layout/layout.module#LayoutModule'},
-    ]
-  }
+  {path: 'app', /*canActivate: [AuthGuard],*/  loadChildren: './layout/layout.module#LayoutModule'}
 ]; // todo add canActivate with guard that redirects to login if not logged in
 
 

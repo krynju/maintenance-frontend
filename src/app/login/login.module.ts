@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/material';
 import {LoginRoutingModule} from './login-routing.module';
-import {PageComponent} from './page/page.component';
+import {LoginComponent} from './login.component';
 
 @NgModule({
-  declarations: [PageComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

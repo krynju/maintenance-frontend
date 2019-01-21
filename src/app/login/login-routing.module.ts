@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PageComponent} from './page/page.component';
+import {LoginComponent} from './login.component';
 
 const routes: Routes = [
-  {path: '', component: PageComponent}
+  {path: '', component: LoginComponent}
 ];
 
 @NgModule({
