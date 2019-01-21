@@ -27,6 +27,31 @@ app.get('/tickets', (req, res) => {
   });
 });
 
+app.get('/machines', (req, res) => {
+  connection.execute(
+    `SELECT * FROM KGULINSK."obiekty"`
+  ).then((result) => {
+    res.send(result.rows.map((row) => models.Machine.fromArray(row)));
+  });
+});
+
+app.get('/failures', (req, res) => {
+  connection.execute(
+    `SELECT * FROM KGULINSK."awarie"`
+  ).then((result) => {
+    res.send(result.rows.map((row) => models.Failure.fromArray(row)));
+  });
+});
+
+
+app.get('/assignments', (req, res) => {
+  connection.execute(
+    `SELECT * FROM KGULINSK."przydzialy"`
+  ).then((result) => {
+    res.send(result.rows.map((row) => models.Assignment.fromArray(row)));
+  });
+});
+
 // /ENDPOINTS ----------------
 
 app.on('dbready', () => {

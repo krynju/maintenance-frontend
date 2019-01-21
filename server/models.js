@@ -12,7 +12,7 @@ class Ticket {
       'closed',
       'status',
       'machine',
-      'malfunction',
+      'failure',
     ].forEach((name, index) => {
       obj[name] = array[index];
     });
@@ -21,4 +21,67 @@ class Ticket {
   }
 }
 
-exports = module.exports = { Ticket };
+class Machine {
+
+  static fromArray(array) {
+    const obj = new Ticket();
+
+    [
+      'id',
+      'name',
+      'status',
+      'serialNumber',
+      'factoryNumber',
+      'description',
+      'localization',
+    ].forEach((name, index) => {
+      obj[name] = array[index];
+    });
+
+    return obj;
+  }
+}
+
+class Failure {
+
+  static fromArray(array) {
+    const obj = new Ticket();
+
+    [
+      'id',
+      'created',
+      'description',
+      'name',
+    ].forEach((name, index) => {
+      obj[name] = array[index];
+    });
+
+    return obj;
+  }
+}
+
+class Assignment {
+
+  static fromArray(array) {
+    const obj = new Ticket();
+
+    [
+      'id',
+      'role',
+      'created',
+      'ticket',
+      'user',
+    ].forEach((name, index) => {
+      obj[name] = array[index];
+    });
+
+    return obj;
+  }
+}
+
+exports = module.exports = {
+  Ticket,
+  Machine,
+  Failure,
+  Assignment,
+};
