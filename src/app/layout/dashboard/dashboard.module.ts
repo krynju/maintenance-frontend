@@ -4,9 +4,8 @@ import {DashPageComponent} from './dash-page/dash-page.component';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {SummaryComponent} from './summary/summary.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {TicketListComponent} from './ticket-list/ticket-list.component';
 import {DemoMaterialModule} from '../../material_module';
-import {FailureListComponent} from './failure-list/failure-list.component';
+import {LayoutModule} from '../layout.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +13,6 @@ import {FailureListComponent} from './failure-list/failure-list.component';
     // MatCard,
     // MatCardContent,
     SummaryComponent,
-    TicketListComponent,
-    FailureListComponent,
 
   ],
   imports: [
@@ -27,7 +24,9 @@ import {FailureListComponent} from './failure-list/failure-list.component';
     // MatSortModule,
     // MatFormFieldModule,
     DemoMaterialModule,
-  ]
+    LayoutModule,
+  ],
+
 })
 export class DashboardModule {
 }

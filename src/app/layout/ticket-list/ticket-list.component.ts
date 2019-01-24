@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DataService} from '../../../shared/services/data.service';
-import {Ticket} from '../../../shared/models/ticket';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {DataService} from '../../shared/services/data.service';
+import {Ticket} from '../../shared/models/ticket';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
@@ -9,6 +9,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
+  @Input() filterType = 'none';
   ticketList: Ticket[];
   ticketListTableData: MatTableDataSource<Ticket> = new MatTableDataSource();
   columnsToDisplay = ['id', 'name', 'status'];
@@ -27,7 +28,11 @@ export class TicketListComponent implements OnInit {
     this.ticketListTableData.sort = this.sort;
     this.dataService.getTicketList()
       .subscribe(data => {
-        this.ticketList = data.filter(x => x.status !== 'zakończone');
+        if (this.filterType === 'open-only') {
+          this.ticketList = data.filter(x => x.status !== 'zakończone');
+        } else {
+          this.ticketList = data;
+        }
         this.ticketListTableData.data = this.ticketList;
       });
   }
