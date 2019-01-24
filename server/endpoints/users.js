@@ -9,7 +9,10 @@ router.get('/:code', (req, res) => {
     [req.params['code']]
   )).then((result) => {
     res.send(models.User.fromArray(result.rows[0]));
-  });
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
 });
 
 module.exports = router;
