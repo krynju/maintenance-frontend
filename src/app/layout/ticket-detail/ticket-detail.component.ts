@@ -14,8 +14,8 @@ import * as moment from 'moment';
 })
 export class TicketDetailComponent implements OnInit {
   ticket: Ticket;
-  failures: Failure[];
-  machines: Machine[];
+  failure: Failure;
+  machine: Machine;
   saveTimeout: boolean;
 
   constructor(
@@ -36,16 +36,16 @@ export class TicketDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     // TODO: lepiej byłoby zrobić detail endpoint w backendzie ale nie ma czasu
+
     this.dataService.getTicketList().subscribe(list => {
       this.ticket = list.find((obj) => obj.id === id);
-    });
 
-    this.dataService.getFailureList().subscribe(list => {
-      this.failures = list;
-    });
-
-    this.dataService.getMachineList().subscribe(list => {
-      this.machines = list;
+      this.dataService.getFailureList().subscribe(data => {
+        this.failure = data.find(x => x.id === this.ticket.failure);
+      });
+      this.dataService.getMachineList().subscribe(data => {
+        this.machine = data.find(x => x.id === this.ticket.machine);
+      });
     });
   }
 

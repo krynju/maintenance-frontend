@@ -1,6 +1,23 @@
 <mat-card>
-  <mat-card-content>
-    <button (click)="edit()" mat-button> ale</button>
+  <mat-card-header fxLayout="row">
+    <h1 fxFlex fxGrow="10">Viewing ticket {{ticket.name}}</h1>
+    <button (click)="edit()" fxFlex mat-stroked-button> edit</button>
+  </mat-card-header>
+  <mat-card-content fxLayout="column">
+
+    <mat-card-subtitle fxFlex>Connected to {{failure.name}} (id:{{failure.id}}) failure and machine {{machine.name}}
+      (id:{{machine.id}})
+    </mat-card-subtitle>
+
+    <mat-card-title>Description</mat-card-title>
+    <mat-card>
+      {{ticket.description}}
+    </mat-card>
 
   </mat-card-content>
+  <mat-card-footer fxLayout="row" style="padding: 0 15px 15px 15px">
+    <mat-card-title fxFlex>Priority: {{ticket.priority}}</mat-card-title>
+    <mat-card-title fxFlex>Status: {{ticket.status}}</mat-card-title>
+
+  </mat-card-footer>
 </mat-card>
