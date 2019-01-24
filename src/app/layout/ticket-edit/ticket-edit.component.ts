@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Ticket} from '../../shared/models/ticket';
 import {DataService} from '../../shared/services/data.service';
 import {Failure} from '../../shared/models/failure';
@@ -8,24 +8,22 @@ import {Location} from '@angular/common';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-ticket-detail',
-  templateUrl: './ticket-detail.component.html',
-  styleUrls: ['./ticket-detail.component.scss']
+  selector: 'app-ticket-edit',
+  templateUrl: './ticket-edit.component.html',
+  styleUrls: ['./ticket-edit.component.scss']
 })
-export class TicketDetailComponent implements OnInit {
+export class TicketEditComponent implements OnInit {
   ticket: Ticket;
-  failure: Failure;
-  machine: Machine;
+  failures: Failure[];
+  machines: Machine[];
   saveTimeout: boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private dataService: DataService,
     private location: Location,
-
-
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.saveTimeout = false;
@@ -36,16 +34,16 @@ export class TicketDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     // TODO: lepiej byłoby zrobić detail endpoint w backendzie ale nie ma czasu
-
     this.dataService.getTicketList().subscribe(list => {
       this.ticket = list.find((obj) => obj.id === id);
+    });
 
-      this.dataService.getFailureList().subscribe(data => {
-        this.failure = data.find(x => x.id === this.ticket.failure);
-      });
-      this.dataService.getMachineList().subscribe(data => {
-        this.machine = data.find(x => x.id === this.ticket.machine);
-      });
+    this.dataService.getFailureList().subscribe(list => {
+      this.failures = list;
+    });
+
+    this.dataService.getMachineList().subscribe(list => {
+      this.machines = list;
     });
   }
 
@@ -61,7 +59,4 @@ export class TicketDetailComponent implements OnInit {
     this.location.back();
   }
 
-  edit() {
-    this.router.navigate(['/app/ticket-edit/' + String(this.route.snapshot.paramMap.get('id'))]);
-  }
 }

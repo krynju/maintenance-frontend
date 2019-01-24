@@ -10,6 +10,7 @@ export class SummaryComponent implements OnInit {
   @Input() elo;
   activeFailureCount: number;
   activeTicketCount: number;
+  username = 'user';
 
   constructor(
     private dataService: DataService,

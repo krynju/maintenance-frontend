@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {LayoutComponent} from './layout.component';
 import {TicketDetailComponent} from './ticket-detail/ticket-detail.component';
+import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       {path: 'ticket-logs', loadChildren: './ticket-history/ticket-history.module#TicketHistoryModule'},
       {path: 'failure-logs', loadChildren: './failure-history/failure-history.module#FailureHistoryModule'},
       {path: 'ticket/:id', component: TicketDetailComponent},
+      {path: 'ticket-edit/:id', component: TicketEditComponent},
     ]
   },
 
