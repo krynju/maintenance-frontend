@@ -18,10 +18,13 @@ export class TicketListComponent implements OnInit {
   constructor(private dataService: DataService) {
   }
 
+  applyFilter(filterValue: string) {
+    this.ticketListTableData.filter = filterValue.trim().toLowerCase();
+  }
+
   ngOnInit() {
     this.ticketListTableData.paginator = this.paginator;
     this.ticketListTableData.sort = this.sort;
-    console.log(this.sort);
     this.dataService.getTicketList()
       .subscribe(data => {
         this.ticketList = data;
