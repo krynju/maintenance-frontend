@@ -29,6 +29,10 @@ export class DataService {
     return this.http.get<Failure[]>(environment.BACKEND_LONG_IP + '/failures');
   }
 
+  putFailure(obj) {
+    return this.http.put(environment.BACKEND_LONG_IP + '/failures', obj, {responseType: 'text'});
+  }
+
   patchTicket(obj) {
     return this.http.patch(environment.BACKEND_LONG_IP + '/tickets', obj, {responseType: 'text'});
   }

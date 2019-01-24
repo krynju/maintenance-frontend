@@ -5,6 +5,7 @@ import {LayoutComponent} from './layout.component';
 import {TicketDetailComponent} from './ticket-detail/ticket-detail.component';
 import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
 import {TicketCreateComponent} from './ticket-create/ticket-create.component';
+import {FailureCreateComponent} from './failure-create/failure-create.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       {path: 'ticket/:id', component: TicketDetailComponent},
       {path: 'ticket-edit/:id', component: TicketEditComponent},
       {path: 'ticket-create', component: TicketCreateComponent},
+      {path: 'failure-create', component: FailureCreateComponent},
     ]
   },
 

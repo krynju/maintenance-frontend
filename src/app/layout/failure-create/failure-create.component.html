@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-header fxLayout="row" fxLayoutAlign="flex-start baseline">
+      <h1 fxFlex>
+        Editing failure {{failure.name}}
+      </h1>
+    </mat-card-header>
+
+    <div>
+      <mat-form-field>
+        <input [(ngModel)]="failure.name" matInput placeholder="Name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea [(ngModel)]="failure.description" matInput placeholder="Description"></textarea>
+      </mat-form-field>
+
+      <button (click)="save()" color="primary" mat-raised-button>Save</button>
+      <button (click)="close()" color="accent" mat-raised-button>Close</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>
