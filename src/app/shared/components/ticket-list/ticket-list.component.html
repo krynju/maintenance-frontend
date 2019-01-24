@@ -24,8 +24,13 @@
         <td *matCellDef="let ticket" mat-cell> {{ticket.status}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="created">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>created</th>
+        <td *matCellDef="let ticket" mat-cell> {{ticket.created}} </td>
+      </ng-container>
+
       <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
+      <tr (click)="goToDetails(row)" *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="paginationSizes" showFirstLastButtons></mat-paginator>
