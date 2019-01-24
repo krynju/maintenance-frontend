@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-table *ngIf="ticketList" [dataSource]="ticketListTableData">
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell> Id</th>
+        <td *matCellDef="let ticket" mat-cell> {{ticket.id}} </td>
+      </ng-container>
+      <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

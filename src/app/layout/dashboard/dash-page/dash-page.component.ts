@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserInfoServiceService} from '../../../shared/services/user-info-service.service';
+import {UserInfoService} from '../../../shared/services/user-info.service';
 import {models} from 'server/models.js';
 import {Ticket} from '../../../shared/models/Ticket';
 
@@ -11,12 +11,11 @@ import {Ticket} from '../../../shared/models/Ticket';
 export class DashPageComponent implements OnInit {
   ticketList: Ticket[];
 
-  constructor(private userInfoService: UserInfoServiceService) {
+  constructor(private userInfoService: UserInfoService) {
   }
 
   ngOnInit() {
-    this.userInfoService.getTicketList()
-      .subscribe(data => this.ticketList = data);
+
   }
 
 }
