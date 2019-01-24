@@ -4,14 +4,14 @@
       <mat-icon class="sidenav-icon">dashboard</mat-icon>
       {{ 'Dashboard'  }}
     </a>
-    <!--<a [routerLinkActive]="'active'" [routerLink]="['charts']" mat-list-item>-->
-    <!--<mat-icon class="sidenav-icon">bar_chart</mat-icon>-->
-    <!--{{ 'Charts'  }}-->
-    <!--</a>-->
-    <!--<a [routerLinkActive]="'active'" [routerLink]="['tables']" mat-list-item>-->
-    <!--<mat-icon class="sidenav-icon">table_chart</mat-icon>-->
-    <!--{{ 'Tables'  }}-->
-    <!--</a>-->
+    <a [routerLinkActive]="'active'" [routerLink]="['ticket-logs']" mat-list-item>
+      <mat-icon class="sidenav-icon">bar_chart</mat-icon>
+      {{ 'Ticket history'  }}
+    </a>
+    <a [routerLinkActive]="'active'" [routerLink]="['failure-logs']" mat-list-item>
+      <mat-icon class="sidenav-icon">table_chart</mat-icon>
+      {{ 'Failure history'  }}
+    </a>
     <!--<a [routerLinkActive]="'active'" [routerLink]="['forms']" mat-list-item>-->
     <!--<mat-icon class="sidenav-icon">input</mat-icon>-->
     <!--{{ 'Forms'  }}-->

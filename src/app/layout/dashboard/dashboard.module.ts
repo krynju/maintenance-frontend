@@ -4,30 +4,23 @@ import {DashPageComponent} from './dash-page/dash-page.component';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {SummaryComponent} from './summary/summary.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {TicketListComponent} from './ticket-list/ticket-list.component';
 import {DemoMaterialModule} from '../../material_module';
-import {FailureListComponent} from './failure-list/failure-list.component';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
     DashPageComponent,
-    // MatCard,
-    // MatCardContent,
     SummaryComponent,
-    TicketListComponent,
-    FailureListComponent,
 
   ],
   imports: [
     DashboardRoutingModule,
     CommonModule,
     FlexLayoutModule,
-    // MatTableModule,
-    // MatPaginatorModule,
-    // MatSortModule,
-    // MatFormFieldModule,
     DemoMaterialModule,
-  ]
+    SharedModule,
+  ],
+
 })
 export class DashboardModule {
 }
