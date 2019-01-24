@@ -45,7 +45,7 @@ export class TicketDetailComponent implements OnInit {
   }
 
   formatTime(time) {
-    return moment(time).format()
+    return moment(time).format('LLL');
   }
 
   save() {

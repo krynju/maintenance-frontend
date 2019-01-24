@@ -8,39 +8,39 @@
 
     <div *ngIf="ticket && machines && failures">
       <mat-form-field>
-        <input [(ngModel)]="ticket.name" matInput placeholder="Nazwa" required>
+        <input [(ngModel)]="ticket.name" matInput placeholder="Name" required>
       </mat-form-field>
 
       <mat-form-field>
-        <textarea [(ngModel)]="ticket.description" matInput placeholder="Opis"></textarea>
+        <textarea [(ngModel)]="ticket.description" matInput placeholder="Description"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="ticket.priority" name="Priorytet" placeholder="Status">
-          <mat-option value="niski">Niski</mat-option>
-          <mat-option value="normalny">Normalny</mat-option>
-          <mat-option value="wysoki">Wysoki</mat-option>
+        <mat-select [(ngModel)]="ticket.priority" placeholder="Priority">
+          <mat-option value="niski">Low</mat-option>
+          <mat-option value="normalny">Normal</mat-option>
+          <mat-option value="wysoki">High</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <input [ngModel]="formatTime(ticket.created)" disabled matInput placeholder="Czas utworzenia">
+        <input [ngModel]="formatTime(ticket.created)" disabled matInput placeholder="Creation time">
       </mat-form-field>
 
       <mat-form-field>
-        <input [ngModel]="formatTime(ticket.closed)" disabled matInput placeholder="Czas zamknięcia">
+        <input [ngModel]="formatTime(ticket.closed)" disabled matInput placeholder="Resolved time">
       </mat-form-field>
 
       <mat-form-field>
         <mat-select [(ngModel)]="ticket.status" name="food" placeholder="Status">
-          <mat-option value="w trakcie realizacji">W trakcie realizacji</mat-option>
-          <mat-option value="oczekuje na realizacje">Oczekuje na realizacje</mat-option>
-          <mat-option value="zakończone">Zakończone</mat-option>
+          <mat-option value="oczekuje na realizacje">Waiting</mat-option>
+          <mat-option value="w trakcie realizacji">In progress</mat-option>
+          <mat-option value="zakończone">Resolved</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="ticket.machine" name="Obiekt" placeholder="Obiekt">
+        <mat-select [(ngModel)]="ticket.machine" placeholder="Machine">
           <mat-option *ngFor="let machine of machines" [value]="machine.id">
             {{machine.name}}
           </mat-option>
@@ -48,7 +48,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="ticket.failure" name="food" placeholder="Awaria">
+        <mat-select [(ngModel)]="ticket.failure" placeholder="Fault">
           <mat-option *ngFor="let failure of failures" [value]="failure.id">
             {{failure.name}}
           </mat-option>
