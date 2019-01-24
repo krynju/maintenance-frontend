@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DataService} from '../../services/data.service';
 import {Failure} from '../../models/failure';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-failure-list',
@@ -31,13 +32,20 @@ export class FailureListComponent implements OnInit {
     if (this.filterType === 'open-only') {
       this.dataService.getActiveFailureList()
         .subscribe(data => {
-
+          data = data.map(obj => {
+            obj.created = moment(obj.created).format('LLL');
+            return obj;
+          });
           this.failureList = data;
           this.failureListTableData.data = this.failureList;
         });
     } else {
       this.dataService.getFailureList()
         .subscribe(data => {
+          data = data.map(obj => {
+            obj.created = moment(obj.created).format('LLL');
+            return obj;
+          });
           this.failureList = data;
           this.failureListTableData.data = this.failureList;
         });

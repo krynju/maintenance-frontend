@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {Ticket} from '../../models/ticket';
 import {DataService} from '../../services/data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ticket-list',
@@ -31,6 +32,10 @@ export class TicketListComponent implements OnInit {
     this.ticketListTableData.sort = this.sort;
     this.dataService.getTicketList()
       .subscribe(data => {
+        data = data.map(obj => {
+          obj.created = moment(obj.created).format('LLL');
+          return obj;
+        });
         if (this.filterType === 'open-only') {
           this.ticketList = data.filter(x => x.status !== 'zakończone');
         } else {
