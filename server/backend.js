@@ -18,6 +18,7 @@ router.use('/failures', require('./endpoints/failures'));
 router.use('/machines', require('./endpoints/machines'));
 router.use('/tickets', require('./endpoints/tickets'));
 router.use('/users', require('./endpoints/users'));
+router.use('/comments', require('./endpoints/comments'));
 
 app.use('/', router);
 

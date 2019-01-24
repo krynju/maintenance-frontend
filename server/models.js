@@ -50,4 +50,8 @@ exports = module.exports = {
   User: model(
     ['id', 'level', 'type', 'firstName', 'lastName', 'code', 'created'],
   ),
+  Comment: model(
+    ['id', 'title', 'content', 'created', 'ticket', 'user'],
+    ['title', 'content', 'ticket', 'user'],
+  )
 };
