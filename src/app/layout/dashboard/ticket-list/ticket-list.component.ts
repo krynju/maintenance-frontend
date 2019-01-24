@@ -27,8 +27,8 @@ export class TicketListComponent implements OnInit {
     this.ticketListTableData.sort = this.sort;
     this.dataService.getTicketList()
       .subscribe(data => {
-        this.ticketList = data;
-        this.ticketListTableData.data = data;
+        this.ticketList = data.filter(x => x.status !== 'zakończone');
+        this.ticketListTableData.data = this.ticketList;
       });
   }
 

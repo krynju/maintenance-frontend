@@ -1,8 +1,14 @@
 <mat-card>
   <mat-card-content>
-    <mat-form-field>
-      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
-    </mat-form-field>
+    <mat-card-header fxLayout="row" fxLayoutAlign="flex-start baseline">
+      <h1 fxFlex>
+        Open tickets
+      </h1>
+      <mat-form-field fxFlex>
+        <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+      </mat-form-field>
+    </mat-card-header>
+
     <table [dataSource]="ticketListTableData" mat-table matSort>
       <ng-container matColumnDef="id">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>id</th>
