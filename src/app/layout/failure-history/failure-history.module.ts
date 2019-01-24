@@ -4,15 +4,13 @@ import {CommonModule} from '@angular/common';
 import {FailureHistoryRoutingModule} from './failure-history-routing.module';
 import {FhPageComponent} from './fh-page/fh-page.component';
 import {SharedModule} from '../../shared/shared.module';
-import {DemoMaterialModule} from '../../material_module';
 
 @NgModule({
   declarations: [FhPageComponent],
   imports: [
     CommonModule,
     FailureHistoryRoutingModule,
-    SharedModule,
-    DemoMaterialModule,
+    SharedModule
   ]
 })
 export class FailureHistoryModule {

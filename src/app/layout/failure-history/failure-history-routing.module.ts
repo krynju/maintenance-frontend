@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {FailureListComponent} from '../../shared/components/failure-list/failure-list.component';
+import {FhPageComponent} from './fh-page/fh-page.component';
 
-const routes: Routes = [
-  {path: '', component: FailureListComponent}
-];
+const routes: Routes = [{path: '', component: FhPageComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

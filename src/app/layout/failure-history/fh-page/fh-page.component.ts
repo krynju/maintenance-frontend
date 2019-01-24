@@ -5,7 +5,6 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './fh-page.component.html',
   styleUrls: ['./fh-page.component.css']
 })
-
 export class FhPageComponent implements OnInit {
 
   constructor() {
