@@ -8,16 +8,10 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: 'dashboard', loadChildren: './dash/dash.module#DashModule'},
-      {path: 'dashboard-old', loadChildren: './dashboard-old/dashboard.module#DashboardModule'},
-      {path: 'charts', loadChildren: './charts/charts.module#ChartsModule'},
-      {path: 'components', loadChildren: './material-components/material-components.module#MaterialComponentsModule'},
-      {path: 'forms', loadChildren: './forms/forms.module#FormsModule'},
-      {path: 'grid', loadChildren: './grid/grid.module#GridModule'},
-      {path: 'tables', loadChildren: './tables/tables.module#TablesModule'},
-      {path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule'}
+      {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
     ]
-  }
+  },
+
 ];
 
 @NgModule({
