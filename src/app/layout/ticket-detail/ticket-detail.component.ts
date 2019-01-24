@@ -17,6 +17,7 @@ export class TicketDetailComponent implements OnInit {
   failure: Failure;
   machine: Machine;
   saveTimeout: boolean;
+  allowedFlag: boolean = JSON.parse(localStorage.getItem('userData')).level === 0;
 
   constructor(
     private route: ActivatedRoute,
