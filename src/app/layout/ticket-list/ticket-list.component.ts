@@ -9,7 +9,9 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
+  @Input() title = 'Tickets';
   @Input() filterType = 'none';
+  @Input() paginationSizes = [5, 10, 20];
   ticketList: Ticket[];
   ticketListTableData: MatTableDataSource<Ticket> = new MatTableDataSource();
   columnsToDisplay = ['id', 'name', 'status'];

@@ -9,6 +9,8 @@ import {Failure} from '../../shared/models/failure';
   styleUrls: ['./failure-list.component.css']
 })
 export class FailureListComponent implements OnInit {
+  @Input() title_in: string;
+  @Input() paginationSizes = [5, 10, 20];
   @Input() filterType = 'none';
   failureList: Failure[];
   failureListTableData: MatTableDataSource<Failure> = new MatTableDataSource();
