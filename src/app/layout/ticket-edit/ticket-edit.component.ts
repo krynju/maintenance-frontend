@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Ticket} from '../../shared/models/ticket';
 import {DataService} from '../../shared/services/data.service';
 import {Failure} from '../../shared/models/failure';
@@ -8,11 +8,11 @@ import {Location} from '@angular/common';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-ticket-detail',
-  templateUrl: './ticket-detail.component.html',
-  styleUrls: ['./ticket-detail.component.scss']
+  selector: 'app-ticket-edit',
+  templateUrl: './ticket-edit.component.html',
+  styleUrls: ['./ticket-edit.component.scss']
 })
-export class TicketDetailComponent implements OnInit {
+export class TicketEditComponent implements OnInit {
   ticket: Ticket;
   failures: Failure[];
   machines: Machine[];
@@ -20,12 +20,10 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private dataService: DataService,
     private location: Location,
-
-
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.saveTimeout = false;
@@ -61,7 +59,4 @@ export class TicketDetailComponent implements OnInit {
     this.location.back();
   }
 
-  edit() {
-    this.router.navigate(['/app/ticket-edit/' + String(this.route.snapshot.paramMap.get('id'))]);
-  }
 }

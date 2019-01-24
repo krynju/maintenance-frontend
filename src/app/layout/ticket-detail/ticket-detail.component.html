@@ -1,66 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <mat-card-header fxLayout="row" fxLayoutAlign="flex-start baseline">
-      <h1 fxFlex>
-        Ticket
-      </h1>
-    </mat-card-header>
-
-    <div *ngIf="ticket && machines && failures">
-      <mat-form-field>
-        <input [(ngModel)]="ticket.name" matInput placeholder="Name" required>
-      </mat-form-field>
-
-      <mat-form-field>
-        <textarea [(ngModel)]="ticket.description" matInput placeholder="Description"></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select [(ngModel)]="ticket.priority" placeholder="Priority">
-          <mat-option value="niski">Low</mat-option>
-          <mat-option value="normalny">Normal</mat-option>
-          <mat-option value="wysoki">High</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input [ngModel]="formatTime(ticket.created)" disabled matInput placeholder="Creation time">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input [ngModel]="formatTime(ticket.closed)" disabled matInput placeholder="Resolved time">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select [(ngModel)]="ticket.status" name="food" placeholder="Status">
-          <mat-option value="oczekuje na realizacje">Waiting</mat-option>
-          <mat-option value="w trakcie realizacji">In progress</mat-option>
-          <mat-option value="zakończone">Resolved</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select [(ngModel)]="ticket.machine" placeholder="Machine">
-          <mat-option *ngFor="let machine of machines" [value]="machine.id">
-            {{machine.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select [(ngModel)]="ticket.failure" placeholder="Fault">
-          <mat-option *ngFor="let failure of failures" [value]="failure.id">
-            {{failure.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button (click)="save()" [disabled]="saveTimeout" mat-raised-button color="primary">Save</button>
-      <button (click)="close()" [disabled]="saveTimeout" mat-raised-button color="accent">Close</button>
-    </div>
-    <div *ngIf="!ticket || !machines || !failures">
-      Loading, please wait...
-    </div>
+    <button (click)="edit()" mat-button> ale</button>
 
   </mat-card-content>
 </mat-card>

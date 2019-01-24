@@ -28,17 +28,20 @@ export class FailureListComponent implements OnInit {
   ngOnInit() {
     this.failureListTableData.paginator = this.paginator;
     this.failureListTableData.sort = this.sort;
-    // this.dataService.getActiveFailureList()
-    //   .subscribe(data => {
-    //
-    //     this.failureList = data;
-    //     this.failureListTableData.data = this.failureList;
-    //   });
-    // todo uncomment this after api is done
+    if (this.filterType === 'open-only') {
+      this.dataService.getActiveFailureList()
+        .subscribe(data => {
 
-    this.failureList = [{'id': 2, 'name': 'hey', 'created': 'now', 'description': 'ye'},
-      {'id': 2, 'name': 'hey', 'created': 'now', 'description': 'ye'}];
-    this.failureListTableData.data = this.failureList;
+          this.failureList = data;
+          this.failureListTableData.data = this.failureList;
+        });
+    } else {
+      this.dataService.getFailureList()
+        .subscribe(data => {
+          this.failureList = data;
+          this.failureListTableData.data = this.failureList;
+        });
+    }
   }
 
 }
