@@ -1,73 +1,27 @@
 const express = require('express');
-const oracledb = require('oracledb');
 
 const models = require('./models');
 
+const bodyParser = require('body-parser');
+
+console.log("Initializing endpoint server...");
+
 const app = express();
 
-console.log("Starting DB client...");
-let connection = null;
-oracledb.getConnection({
-  user: process.env['ORA_USER'],
-  password: process.env['ORA_PASSWORD'],
-  connectString: process.env['ORA_CONNECTION'],
-}).then((connection_) => {
-  connection = connection_;
-  console.log("DB client ready");
-  app.emit('dbready');
-});
+app.use(express.json());
 
-// ENDPOINTS ----------------
+const router = express.Router();
 
-app.get('/tickets', (req, res) => {
-  connection.execute(
-    `SELECT * FROM KGULINSK."zgloszenia"`
-  ).then((result) => {
-    res.send(result.rows.map((row) => models.Ticket.fromArray(row)));
-  });
-});
+router.use('/assignments', require('./endpoints/assignments'));
+router.use('/failures', require('./endpoints/failures'));
+router.use('/machines', require('./endpoints/machines'));
+router.use('/tickets', require('./endpoints/tickets'));
+router.use('/users', require('./endpoints/users'));
 
-app.get('/machines', (req, res) => {
-  connection.execute(
-    `SELECT * FROM KGULINSK."obiekty"`
-  ).then((result) => {
-    res.send(result.rows.map((row) => models.Machine.fromArray(row)));
-  });
-});
+app.use('/', router);
 
-app.get('/failures', (req, res) => {
-  connection.execute(
-    `SELECT * FROM KGULINSK."awarie"`
-  ).then((result) => {
-    res.send(result.rows.map((row) => models.Failure.fromArray(row)));
-  });
-});
-
-
-app.get('/assignments', (req, res) => {
-  connection.execute(
-    `SELECT * FROM KGULINSK."przydzialy"`
-  ).then((result) => {
-    res.send(result.rows.map((row) => models.Assignment.fromArray(row)));
-  });
-});
-
-app.get('/users/:code', (req, res) => {
-  connection.execute(
-    `SELECT * FROM KGULINSK."uzytkownicy" WHERE "id_pracownika" = :id`,
-    [req.params['code']]
-  ).then((result) => {
-    res.send(models.User.fromArray(result.rows[0]));
-  });
-});
-
-// /ENDPOINTS ----------------
-
-app.on('dbready', () => {
-  console.log("Starting backend server...");
-  app.listen(8081, () => {
-    console.log("Backend server ready");
-  });
+app.listen(8081, () => {
+  console.log("Initializing endpoint server... done, listening on http://127.0.0.1:8081");
 });
 
 
