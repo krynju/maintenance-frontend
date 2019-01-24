@@ -4,7 +4,6 @@ import {AuthGuard} from './shared/guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', redirectTo: 'app/dashboard'},
-  {path: '**', redirectTo: '/app/dashboard'},
   {path: 'login', loadChildren: './login/login.module#LoginModule'},
   {path: 'app', canActivate: [AuthGuard], loadChildren: './layout/layout.module#LayoutModule'}
 ];
