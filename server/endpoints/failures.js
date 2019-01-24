@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/active/count', (req, res) => {
+  db.then(connection => connection.execute(
+    `SELECT COUNT(*) FROM (SELECT "id_awaria", COUNT(*) as cnt FROM (SELECT * FROM KGULINSK."zgloszenia" WHERE "status" <> 'zakończone') GROUP BY "id_awaria" HAVING COUNT(*) > 0)`,
+  )).then((result) => {
+    res.send({ count: result.rows[0][0] })
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 router.put('/', (req, res) => {
   db.then(connection => connection.execute(
     `INSERT INTO KGULINSK."awarie" ("id_awaria", "czas_zgloszenia", "opis", "nazwa") VALUES

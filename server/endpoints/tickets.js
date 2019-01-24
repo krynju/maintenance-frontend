@@ -15,6 +15,17 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/active/count', (req, res) => {
+  db.then(connection => connection.execute(
+    `SELECT COUNT(*) FROM KGULINSK."zgloszenia" WHERE "status" <> 'zakończone'`,
+  )).then((result) => {
+    res.send({ count: result.rows[0][0] });
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 router.put('/', (req, res) => {
   db.then(connection => connection.execute(
     `INSERT INTO KGULINSK."zgloszenia"

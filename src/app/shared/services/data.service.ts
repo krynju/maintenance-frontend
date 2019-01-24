@@ -33,4 +33,13 @@ export class DataService {
   patchTicket(obj) {
     return this.http.patch(environment.BACKEND_LONG_IP + '/tickets', obj, {responseType: 'text'});
   }
+
+  getActiveFailureCount() {
+    return this.http.get(environment.BACKEND_LONG_IP + '/failures/active/count');
+  }
+
+  getActiveTicketCount() {
+    return this.http.get(environment.BACKEND_LONG_IP + '/tickets/active/count');
+  }
+
 }

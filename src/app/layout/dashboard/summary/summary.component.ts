@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from '../../../shared/services/data.service';
 
 @Component({
   selector: 'app-summary',
@@ -7,10 +8,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
   @Input() elo;
-  constructor() {
+  activeFailureCount: number;
+  activeTicketCount: number;
+
+  constructor(
+    private dataService: DataService,
+  ) {
   }
 
   ngOnInit() {
+    this.dataService.getActiveFailureCount().subscribe(result => this.activeFailureCount = result['count']);
+    this.dataService.getActiveTicketCount().subscribe(result => this.activeTicketCount = result['count']);
   }
 
 }
