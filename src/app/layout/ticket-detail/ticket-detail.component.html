@@ -55,7 +55,8 @@
         </mat-select>
       </mat-form-field>
 
-      <button (click)="save()" [disabled]="saveTimeout" mat-raised-button color="primary">Zapisz</button>
+      <button (click)="save()" [disabled]="saveTimeout" mat-raised-button color="primary">Save</button>
+      <button (click)="close()" [disabled]="saveTimeout" mat-raised-button color="accent">Close</button>
     </div>
     <div *ngIf="!ticket || !machines || !failures">
       Loading, please wait...

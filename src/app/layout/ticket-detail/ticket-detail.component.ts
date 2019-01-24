@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Ticket} from '../../shared/models/ticket';
 import {DataService} from '../../shared/services/data.service';
 import {Failure} from '../../shared/models/failure';
 import {Machine} from '../../shared/models/machine';
+import {Location} from '@angular/common';
 import * as moment from 'moment';
 
 @Component({
@@ -20,6 +21,9 @@ export class TicketDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
+    private location: Location,
+
+
   ) { }
 
   ngOnInit() {
@@ -49,9 +53,11 @@ export class TicketDetailComponent implements OnInit {
   }
 
   save() {
-    this.dataService.patchTicket(this.ticket).subscribe();
-    this.saveTimeout = true;
-    setTimeout(() => this.saveTimeout = false, 1000);
+    this.dataService.patchTicket(this.ticket).subscribe(() => this.close());
+  }
+
+  close() {
+    this.location.back();
   }
 
 }
