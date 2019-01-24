@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashPageComponent} from './dash-page/dash-page.component';
 import {DashboardRoutingModule} from './dashboard-routing.module';
-import {MatCard, MatCardContent, MatPaginatorModule, MatTableModule} from '@angular/material';
+import {MatCard, MatCardContent, MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
 import {SummaryComponent} from './summary/summary.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TicketListComponent} from './ticket-list/ticket-list.component';
@@ -12,8 +12,6 @@ import {TicketListComponent} from './ticket-list/ticket-list.component';
     DashPageComponent,
     MatCard,
     MatCardContent,
-
-
     SummaryComponent,
     TicketListComponent],
   imports: [
@@ -22,6 +20,7 @@ import {TicketListComponent} from './ticket-list/ticket-list.component';
     FlexLayoutModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class DashboardModule {

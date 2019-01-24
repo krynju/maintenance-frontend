@@ -1,23 +1,26 @@
 <mat-card>
   <mat-card-content>
 
-    <mat-table *ngIf="ticketList" [dataSource]="ticketListTableData" style="width: 100%">
+    <table [dataSource]="ticketListTableData" mat-table matSort>
       <ng-container matColumnDef="id">
-        <th *matHeaderCellDef mat-header-cell> id</th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>id</th>
         <td *matCellDef="let ticket" mat-cell> {{ticket.id}} </td>
       </ng-container>
       <ng-container matColumnDef="name">
-        <th *matHeaderCellDef mat-header-cell> name</th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>name</th>
         <td *matCellDef="let ticket" mat-cell> {{ticket.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th *matHeaderCellDef mat-header-cell> status</th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>status</th>
         <td *matCellDef="let ticket" mat-cell> {{ticket.status}} </td>
       </ng-container>
 
       <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
       <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
-    </mat-table>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[2, 5, 20]" showFirstLastButtons></mat-paginator>
+
   </mat-card-content>
 </mat-card>
