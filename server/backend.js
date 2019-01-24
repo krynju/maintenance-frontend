@@ -1,16 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 
 const models = require('./models');
-
-const bodyParser = require('body-parser');
+const router = express.Router();
 
 console.log("Initializing endpoint server...");
 
 const app = express();
 
 app.use(express.json());
-
-const router = express.Router();
+app.use(cors());
 
 router.use('/assignments', require('./endpoints/assignments'));
 router.use('/failures', require('./endpoints/failures'));
