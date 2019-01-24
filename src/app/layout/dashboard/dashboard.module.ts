@@ -6,6 +6,7 @@ import {SummaryComponent} from './summary/summary.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TicketListComponent} from './ticket-list/ticket-list.component';
 import {DemoMaterialModule} from '../../material_module';
+import {FailureListComponent} from './failure-list/failure-list.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {DemoMaterialModule} from '../../material_module';
     // MatCardContent,
     SummaryComponent,
     TicketListComponent,
+    FailureListComponent,
 
   ],
   imports: [

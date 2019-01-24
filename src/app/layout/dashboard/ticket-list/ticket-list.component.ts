@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../../shared/services/data.service';
-import {Ticket} from '../../../shared/models/Ticket';
+import {Ticket} from '../../../shared/models/ticket';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({

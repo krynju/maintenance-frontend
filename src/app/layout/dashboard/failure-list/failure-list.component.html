@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-header fxLayout="row" fxLayoutAlign="flex-start baseline">
+      <h1 fxFlex>
+        Open failures
+      </h1>
+      <mat-form-field fxFlex>
+        <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+      </mat-form-field>
+    </mat-card-header>
+
+    <table [dataSource]="failureListTableData" mat-table matSort>
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>id</th>
+        <td *matCellDef="let failure" mat-cell> {{failure.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>name</th>
+        <td *matCellDef="let failure" mat-cell> {{failure.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>created</th>
+        <td *matCellDef="let failure" mat-cell> {{failure.created}} </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  </mat-card-content>
+</mat-card>
