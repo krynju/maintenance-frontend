@@ -6,7 +6,7 @@
       </h1>
     </mat-card-header>
 
-    <div *ngIf="ticket && machines && failures">
+    <div *ngIf="machines && failures">
       <mat-form-field>
         <input [(ngModel)]="ticket.name" matInput placeholder="Name" required>
       </mat-form-field>
@@ -42,7 +42,7 @@
       <button (click)="save()" [disabled]="saveTimeout" color="primary" mat-raised-button>Save</button>
       <button (click)="close()" [disabled]="saveTimeout" color="accent" mat-raised-button>Close</button>
     </div>
-    <div *ngIf="!ticket || !machines || !failures">
+    <div *ngIf="!machines || !failures">
       Loading, please wait...
     </div>
 

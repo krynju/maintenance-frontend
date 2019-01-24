@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './layout.component';
 import {TicketDetailComponent} from './ticket-detail/ticket-detail.component';
 import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
+import {TicketCreateComponent} from './ticket-create/ticket-create.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path: 'failure-logs', loadChildren: './failure-history/failure-history.module#FailureHistoryModule'},
       {path: 'ticket/:id', component: TicketDetailComponent},
       {path: 'ticket-edit/:id', component: TicketEditComponent},
+      {path: 'ticket-create', component: TicketCreateComponent},
     ]
   },
 

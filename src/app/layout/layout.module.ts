@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {TicketDetailComponent} from './ticket-detail/ticket-detail.component';
 import {MatCardModule} from '@angular/material/card';
 import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
+import { TicketCreateComponent } from './ticket-create/ticket-create.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
     TicketEditComponent,
     SidebarComponent,
     TicketDetailComponent,
+    TicketCreateComponent,
   ],
   exports: []
 })
