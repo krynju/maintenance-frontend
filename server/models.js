@@ -23,19 +23,22 @@ function model(readFields, writeFields) {
 
 exports = module.exports = {
   Assignment: model(
-    ['id', 'role', 'created', 'ticket', 'user']
+    ['id', 'role', 'created', 'ticket', 'user'],
+    ['role', 'ticket'],
   ),
   Failure: model(
     ['id', 'created', 'description', 'name'],
-    ['id', 'description', 'name'],
+    ['description', 'name'],
   ),
   Machine: model(
-    ['id', 'name', 'status', 'serialNumber', 'factoryNumber', 'description', 'localization']
+    ['id', 'name', 'status', 'serialNumber', 'factoryNumber', 'localization'],
+    ['name', 'status', 'serialNumber', 'factoryNumber', 'localization'],
   ),
   Ticket: model(
-    ['id', 'name', 'description', 'priority', 'created', 'closed', 'status', 'machine', 'failure']
+    ['id', 'name', 'description', 'priority', 'created', 'closed', 'status', 'machine', 'failure'],
+    ['name', 'description', 'priority', 'status', 'machine', 'failure'],
   ),
   User: model(
-    ['id', 'level', 'type', 'firstName', 'lastName', 'code', 'created']
+    ['id', 'level', 'type', 'firstName', 'lastName', 'code', 'created'],
   ),
 };

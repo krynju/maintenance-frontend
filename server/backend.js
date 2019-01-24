@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 
 const models = require('./models');
+const db = require('./db');
+
 const router = express.Router();
 
 console.log("Initializing endpoint server...");
@@ -19,9 +21,16 @@ router.use('/users', require('./endpoints/users'));
 
 app.use('/', router);
 
-app.listen(8081, () => {
+const server = app.listen(8081, () => {
   console.log("Initializing endpoint server... done, listening on http://127.0.0.1:8081");
 });
 
-
-
+process.on('SIGINT', () => {
+  server.close();
+  db.then(connection => {
+    console.log("Committing to DB...")
+    connection.commit();
+    connection.close();
+    console.log("Committing to DB... done")
+  });
+})

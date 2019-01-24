@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
 
 router.put('/', (req, res) => {
   db.then(connection => connection.execute(
-    `INSERT INTO KGULINSK."awarie" ("id_awaria", "czas_zgloszenia", "opis", "nazwa") VALUES (:id, CURRENT_DATE, :description, :name)`,
+    `INSERT INTO KGULINSK."awarie" ("id_awaria", "czas_zgloszenia", "opis", "nazwa") VALUES
+     ((SELECT MAX("id_awaria") + 1 FROM KGULINSK."awarie"), CURRENT_DATE, :description, :name)`,
     models.Failure.toArray(req.body),
   )).then((result) => {
     console.log(result);
