@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserInfoServiceService} from '../../../shared/services/user-info-service.service';
+import {models} from 'server/models.js';
+import {Ticket} from '../../../shared/models/Ticket';
 
 @Component({
   selector: 'app-dash-page',
@@ -7,14 +9,14 @@ import {UserInfoServiceService} from '../../../shared/services/user-info-service
   styleUrls: ['./dash-page.component.css']
 })
 export class DashPageComponent implements OnInit {
-  ticketlist: any;
+  ticketList: Ticket[];
 
   constructor(private userInfoService: UserInfoServiceService) {
   }
 
   ngOnInit() {
     this.userInfoService.getTicketList()
-      .subscribe(data => this.ticketlist = data);
+      .subscribe(data => this.ticketList = data);
   }
 
 }
