@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/active', (req, res) => {
+  db.then(connection => connection.execute(
+    `SELECT * FROM KGULINSK."awarie" WHERE "id_awaria" IN (SELECT "id_awaria" as cnt FROM (SELECT * FROM KGULINSK."zgloszenia" WHERE "status" <> 'zakończone') GROUP BY "id_awaria" HAVING COUNT(*) > 0)`,
+  )).then((result) => {
+    res.send(result.rows.map((row) => models.Failure.fromArray(row)));
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 router.get('/active/count', (req, res) => {
   db.then(connection => connection.execute(
     `SELECT COUNT(*) FROM (SELECT "id_awaria", COUNT(*) as cnt FROM (SELECT * FROM KGULINSK."zgloszenia" WHERE "status" <> 'zakończone') GROUP BY "id_awaria" HAVING COUNT(*) > 0)`,
