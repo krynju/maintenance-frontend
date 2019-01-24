@@ -52,7 +52,9 @@ router.patch('/', (req, res) => {
   const id = array.shift();
   array.push(id);
   array[3] = moment(array[3]).format('YYYY-MM-DD HH:mm:ss');
-  array[4] = moment(array[4]).format('YYYY-MM-DD HH:mm:ss');
+  if (array[4] !== null) {
+    array[4] = moment(array[4]).format('YYYY-MM-DD HH:mm:ss');
+  }
   db.then(connection => connection.execute(
     `UPDATE KGULINSK."zgloszenia" SET
     "nazwa" = :v0, "opis" = :v1, "priorytet" = :v2,
