@@ -4,6 +4,7 @@ import {Ticket} from '../../shared/models/ticket';
 import {DataService} from '../../shared/services/data.service';
 import {Failure} from '../../shared/models/failure';
 import {Machine} from '../../shared/models/machine';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -41,6 +42,10 @@ export class TicketDetailComponent implements OnInit {
     this.dataService.getMachineList().subscribe(list => {
       this.machines = list;
     });
+  }
+
+  formatTime(time) {
+    return moment(time).format()
   }
 
   save() {

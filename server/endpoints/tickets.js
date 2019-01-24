@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const moment = require('moment');
 
 const db = require('../db');
 const models = require('../models');
@@ -32,11 +33,15 @@ router.put('/', (req, res) => {
 });
 
 router.patch('/', (req, res) => {
+  if (req.body.status === 'zakończone') {
+    req.body.closed = moment().format('YYYY-MM-DD HH:mm:ss');
+  }
+
   const array = models.Ticket.toArrayAll(req.body);
   const id = array.shift();
   array.push(id);
-  array[3] = new Date(array[3]).toISOString().slice(0, 19).replace('T', ' ');
-  array[4] = new Date(array[4]).toISOString().slice(0, 19).replace('T', ' ');
+  array[3] = moment(array[3]).format('YYYY-MM-DD HH:mm:ss');
+  array[4] = moment(array[4]).format('YYYY-MM-DD HH:mm:ss');
   db.then(connection => connection.execute(
     `UPDATE KGULINSK."zgloszenia" SET
     "nazwa" = :v0, "opis" = :v1, "priorytet" = :v2,

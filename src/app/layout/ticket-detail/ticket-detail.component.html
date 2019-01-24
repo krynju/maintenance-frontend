@@ -24,11 +24,11 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input [ngModel]="ticket.created" disabled matInput placeholder="Czas utworzenia">
+        <input [ngModel]="formatTime(ticket.created)" disabled matInput placeholder="Czas utworzenia">
       </mat-form-field>
 
       <mat-form-field>
-        <input [ngModel]="ticket.closed" disabled matInput placeholder="Czas zamknięcia">
+        <input [ngModel]="formatTime(ticket.closed)" disabled matInput placeholder="Czas zamknięcia">
       </mat-form-field>
 
       <mat-form-field>
