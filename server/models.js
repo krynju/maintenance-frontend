@@ -1,109 +1,41 @@
-class Ticket {
+function model(readFields, writeFields) {
+  return {
+    fromArray(array) {
+      const obj = {};
 
-  static fromArray(array) {
-    const obj = new Ticket();
+      readFields.forEach((name, index) => {
+        obj[name] = array[index];
+      });
 
-    [
-      'id',
-      'name',
-      'description',
-      'priority',
-      'created',
-      'closed',
-      'status',
-      'machine',
-      'failure',
-    ].forEach((name, index) => {
-      obj[name] = array[index];
-    });
+      return obj;
+    },
+    toArray(obj) {
+      const array = [];
 
-    return obj;
-  }
-}
+      writeFields.forEach((name, index) => {
+        array[index] = obj[name];
+      });
 
-class Machine {
-
-  static fromArray(array) {
-    const obj = new Ticket();
-
-    [
-      'id',
-      'name',
-      'status',
-      'serialNumber',
-      'factoryNumber',
-      'description',
-      'localization',
-    ].forEach((name, index) => {
-      obj[name] = array[index];
-    });
-
-    return obj;
-  }
-}
-
-class Failure {
-
-  static fromArray(array) {
-    const obj = new Ticket();
-
-    [
-      'id',
-      'created',
-      'description',
-      'name',
-    ].forEach((name, index) => {
-      obj[name] = array[index];
-    });
-
-    return obj;
-  }
-}
-
-class Assignment {
-
-  static fromArray(array) {
-    const obj = new Ticket();
-
-    [
-      'id',
-      'role',
-      'created',
-      'ticket',
-      'user',
-    ].forEach((name, index) => {
-      obj[name] = array[index];
-    });
-
-    return obj;
-  }
-}
-
-class User {
-
-  static fromArray(array) {
-    const obj = new Ticket();
-
-    [
-      'id',
-      'level',
-      'type',
-      'firstName',
-      'lastName',
-      'code',
-      'created',
-    ].forEach((name, index) => {
-      obj[name] = array[index];
-    });
-
-    return obj;
+      return array;
+    }
   }
 }
 
 exports = module.exports = {
-  Ticket,
-  Machine,
-  Failure,
-  Assignment,
-  User,
+  Assignment: model(
+    ['id', 'role', 'created', 'ticket', 'user']
+  ),
+  Failure: model(
+    ['id', 'created', 'description', 'name'],
+    ['id', 'description', 'name'],
+  ),
+  Machine: model(
+    ['id', 'name', 'status', 'serialNumber', 'factoryNumber', 'description', 'localization']
+  ),
+  Ticket: model(
+    ['id', 'name', 'description', 'priority', 'created', 'closed', 'status', 'machine', 'failure']
+  ),
+  User: model(
+    ['id', 'level', 'type', 'firstName', 'lastName', 'code', 'created']
+  ),
 };
