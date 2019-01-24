@@ -11,7 +11,7 @@ import {MatTableDataSource} from '@angular/material';
 export class TicketListComponent implements OnInit {
   ticketList: Ticket[];
   ticketListTableData: MatTableDataSource<Ticket> = new MatTableDataSource(this.ticketList);
-  columnsToDisplay = ['id'];
+  columnsToDisplay = ['id', 'name', 'status'];
 
   constructor(private dataService: DataService) {
   }
