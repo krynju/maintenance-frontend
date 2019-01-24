@@ -8,7 +8,10 @@ router.get('/', (req, res) => {
     `SELECT * FROM KGULINSK."przydzialy"`,
   )).then((result) => {
     res.send(result.rows.map((row) => models.Assignment.fromArray(row)));
-  });
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
 });
 
 router.put('/', (req, res) => {
@@ -21,6 +24,7 @@ router.put('/', (req, res) => {
     console.log(result);
     res.sendStatus(200);
   }).catch((err) => {
+    res.sendStatus(400);
     console.log(err);
   })
 });

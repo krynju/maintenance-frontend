@@ -17,6 +17,15 @@ function model(readFields, writeFields) {
       });
 
       return array;
+    },
+    toArrayAll(obj) {
+      const array = [];
+
+      readFields.forEach((name, index) => {
+        array[index] = obj[name];
+      });
+
+      return array;
     }
   }
 }
@@ -35,7 +44,7 @@ exports = module.exports = {
     ['name', 'status', 'serialNumber', 'factoryNumber', 'localization'],
   ),
   Ticket: model(
-    ['id', 'name', 'description', 'priority', 'created', 'closed', 'status', 'machine', 'failure'],
+    ['id', 'name', 'description', 'priority', 'created', 'closed', 'status', 'departament', 'machine', 'failure'],
     ['name', 'description', 'priority', 'status', 'machine', 'failure'],
   ),
   User: model(

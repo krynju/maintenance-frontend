@@ -8,7 +8,10 @@ router.get('/', (req, res) => {
     `SELECT * FROM KGULINSK."awarie"`,
   )).then((result) => {
     res.send(result.rows.map((row) => models.Failure.fromArray(row)));
-  });
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
 });
 
 router.put('/', (req, res) => {
@@ -20,6 +23,7 @@ router.put('/', (req, res) => {
     console.log(result);
     res.sendStatus(200);
   }).catch((err) => {
+    res.sendStatus(400);
     console.log(err);
   })
 });
