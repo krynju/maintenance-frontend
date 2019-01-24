@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {DataService} from '../../shared/services/data.service';
-import {Ticket} from '../../shared/models/ticket';
+import {DataService} from '../../services/data.service';
+import {Ticket} from '../../models/ticket';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
@@ -9,7 +9,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
-  @Input() title = 'Tickets';
+  @Input() title_in = 'Tickets';
   @Input() filterType = 'none';
   @Input() paginationSizes = [5, 10, 20];
   ticketList: Ticket[];

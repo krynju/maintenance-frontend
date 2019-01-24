@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {DataService} from '../../shared/services/data.service';
-import {Failure} from '../../shared/models/failure';
+import {DataService} from '../../services/data.service';
+import {Failure} from '../../models/failure';
 
 @Component({
   selector: 'app-failure-list',
@@ -9,7 +9,7 @@ import {Failure} from '../../shared/models/failure';
   styleUrls: ['./failure-list.component.css']
 })
 export class FailureListComponent implements OnInit {
-  @Input() title_in: string;
+  @Input() title_in = 'Failures';
   @Input() paginationSizes = [5, 10, 20];
   @Input() filterType = 'none';
   failureList: Failure[];

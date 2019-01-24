@@ -7,9 +7,6 @@ import {LayoutRoutingModule} from './layout-routing.module';
 import {LayoutComponent} from './layout.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DemoMaterialModule} from '../material_module';
-import {TicketListComponent} from './ticket-list/ticket-list.component';
-import {FailureListComponent} from './failure-list/failure-list.component';
-
 
 @NgModule({
   imports: [
@@ -22,10 +19,8 @@ import {FailureListComponent} from './failure-list/failure-list.component';
     LayoutComponent,
     TopnavComponent,
     SidebarComponent,
-    TicketListComponent,
-    FailureListComponent,
   ],
-  exports: [TicketListComponent, FailureListComponent]
+  exports: []
 })
 export class LayoutModule {
 }

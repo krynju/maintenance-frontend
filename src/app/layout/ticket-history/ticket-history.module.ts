@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {TicketHistoryRoutingModule} from './ticket-history-routing.module';
 import {ThPageComponent} from './th-page/th-page.component';
 import {DemoMaterialModule} from '../../material_module';
-import {LayoutModule} from '../layout.module';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   declarations: [ThPageComponent],
@@ -12,7 +12,7 @@ import {LayoutModule} from '../layout.module';
     CommonModule,
     TicketHistoryRoutingModule,
     DemoMaterialModule,
-    LayoutModule,
+    SharedModule
   ]
 })
 export class TicketHistoryModule {
