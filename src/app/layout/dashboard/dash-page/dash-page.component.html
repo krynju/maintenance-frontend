@@ -1,6 +1,18 @@
 <div fxLayout="column">
   <app-summary [elo]="'hey'" class="vertical_card"></app-summary>
-  <app-ticket-list [filterType]="'open-only'" [title_in]="'Open tickets'" class="vertical_card"></app-ticket-list>
-  <app-failure-list [filterType]="'open-only'" [title_in]="'Open failures'" class="vertical_card"></app-failure-list>
+  <app-ticket-list
+    [filterType]="'open-only'"
+    [paginationSizes]="[5,10,15]"
+    [title_in]="'Open tickets'"
+    class="vertical_card">
+  </app-ticket-list>
+
+  <app-failure-list
+    [filterType]="'open-only'"
+    [paginationSizes]="[5,10,15]"
+    [title_in]="'Open failures'"
+    class="vertical_card">
+
+  </app-failure-list>
 </div>
 
