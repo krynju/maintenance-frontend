@@ -29,4 +29,23 @@ router.put('/', (req, res) => {
   })
 });
 
+router.patch('/', (req, res) => {
+  const array = models.Machine.toArrayAll(req.body);
+  const id = array.shift();
+  array.push(id);
+
+  db.then(connection => connection.execute(
+    `UPDATE KGULINSK."obiekty" SET
+    "nazwa" = :v0, "stan" = :v1, "nr_seryjny" = :v2, "nr_wewnetrzny" = :v3, "lokalizacja" = :v4
+    WHERE "id_obiekt" = :v5`,
+    array,
+  )).then((result) => {
+    console.log(result);
+    res.sendStatus(200);
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 module.exports = router;

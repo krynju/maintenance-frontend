@@ -28,4 +28,25 @@ router.put('/', (req, res) => {
   })
 });
 
+router.patch('/', (req, res) => {
+  const array = models.Failure.toArrayAll(req.body);
+  const id = array.shift();
+  array.push(id);
+  array[0] = new Date(array[0]).toISOString().slice(0, 19).replace('T', ' ');
+
+  db.then(connection => connection.execute(
+    `UPDATE KGULINSK."awarie" SET 
+    "czas_zgloszenia" = TO_DATE(:v0, 'YYYY-MM-DD HH24:MI:SS'), "opis" = :v1, "nazwa" = :v2
+    WHERE "id_awaria" = :v3
+    `,
+    array,
+  )).then((result) => {
+    console.log(result);
+    res.sendStatus(200);
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 module.exports = router;
