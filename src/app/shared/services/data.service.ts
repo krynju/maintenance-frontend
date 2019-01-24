@@ -3,6 +3,8 @@ import {Ticket} from '../models/ticket';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Machine} from '../models/machine';
+import {Failure} from '../models/failure';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,17 @@ export class DataService {
 
   getActiveFailureList() {
     return new Observable();
+  }
+
+  getMachineList() {
+    return this.http.get<Machine[]>(environment.BACKEND_LONG_IP + '/machines');
+  }
+
+  getFailureList() {
+    return this.http.get<Failure[]>(environment.BACKEND_LONG_IP + '/failures');
+  }
+
+  patchTicket(obj) {
+    return this.http.patch(environment.BACKEND_LONG_IP + '/tickets', obj, {responseType: 'text'});
   }
 }

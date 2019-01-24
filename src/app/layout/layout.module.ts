@@ -6,6 +6,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatSelectModule,
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
@@ -15,6 +16,9 @@ import {TopnavComponent} from './components/topnav/topnav.component';
 import {LayoutRoutingModule} from './layout-routing.module';
 import {LayoutComponent} from './layout.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule} from '@angular/forms';
+import {TicketDetailComponent} from './ticket-detail/ticket-detail.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -29,8 +33,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatMenuModule,
     MatListModule,
     FlexLayoutModule,
+    FormsModule,
+    MatSelectModule,
+    MatCardModule,
   ],
-  declarations: [LayoutComponent, TopnavComponent, SidebarComponent]
+  declarations: [LayoutComponent, TopnavComponent, SidebarComponent, TicketDetailComponent]
 })
 export class LayoutModule {
 }
