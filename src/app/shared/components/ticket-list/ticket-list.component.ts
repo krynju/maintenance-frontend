@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {Ticket} from '../../models/ticket';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ticket-list',
@@ -14,11 +15,11 @@ export class TicketListComponent implements OnInit {
   @Input() paginationSizes = [5, 10, 20];
   ticketList: Ticket[];
   ticketListTableData: MatTableDataSource<Ticket> = new MatTableDataSource();
-  columnsToDisplay = ['id', 'name', 'status'];
+  columnsToDisplay = ['id', 'name', 'status', 'created'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   applyFilter(filterValue: string) {
@@ -39,4 +40,10 @@ export class TicketListComponent implements OnInit {
       });
   }
 
+  goToDetails(row: any) {
+
+    this.router.navigate(['/app/ticket/' + String(row.id)]);
+
+
+  }
 }

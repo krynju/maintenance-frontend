@@ -21,3 +21,14 @@ body {
 .vertical_card {
   margin-bottom: 10px;
 }
+
+
+.mat-row:hover {
+  background: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+
+}
+
+.mat-row {
+  height: 35px !important;
+}
