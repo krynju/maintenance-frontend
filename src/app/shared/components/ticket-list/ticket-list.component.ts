@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {Ticket} from '../../models/ticket';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
+import {Ticket} from '../../models/ticket';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-ticket-list',
@@ -41,9 +41,6 @@ export class TicketListComponent implements OnInit {
   }
 
   goToDetails(row: any) {
-
     this.router.navigate(['/app/ticket/' + String(row.id)]);
-
-
   }
 }
