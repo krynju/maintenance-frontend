@@ -9,7 +9,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
-      {path: 'ticket-logs', loadChildren: './ticket-history/ticket-history.module#TicketHistoryModule'}
+      {path: 'ticket-logs', loadChildren: './ticket-history/ticket-history.module#TicketHistoryModule'},
+      {path: 'failure-logs', loadChildren: './failure-history/failure-history.module#FailureHistoryModule'}
     ]
   },
 
