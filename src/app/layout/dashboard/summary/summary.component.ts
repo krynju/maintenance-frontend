@@ -18,6 +18,10 @@ export class SummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('userData')) {
+      this.username = JSON.parse(localStorage.getItem('userData')).firstName;
+    }
+
     this.dataService.getActiveFailureCount().subscribe(result => this.activeFailureCount = result['count']);
     this.dataService.getActiveTicketCount().subscribe(result => this.activeTicketCount = result['count']);
   }
