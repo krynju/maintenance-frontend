@@ -41,4 +41,12 @@ export class DataService {
     return this.http.get(environment.BACKEND_LONG_IP + '/tickets/active/count');
   }
 
+  getComments() {
+    return this.http.get<Comment[]>(environment.BACKEND_LONG_IP + '/comments');
+  }
+
+  putComment(bod) {
+    return this.http.put(environment.BACKEND_LONG_IP + '/comments', bod);
+  }
+
 }

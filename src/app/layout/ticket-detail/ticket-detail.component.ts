@@ -6,11 +6,19 @@ import {Failure} from '../../shared/models/failure';
 import {Machine} from '../../shared/models/machine';
 import {Location} from '@angular/common';
 import * as moment from 'moment';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-ticket-detail',
   templateUrl: './ticket-detail.component.html',
-  styleUrls: ['./ticket-detail.component.scss']
+  styleUrls: ['./ticket-detail.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class TicketDetailComponent implements OnInit {
   ticket: Ticket;
@@ -18,6 +26,12 @@ export class TicketDetailComponent implements OnInit {
   machine: Machine;
   saveTimeout: boolean;
   allowedFlag: boolean = JSON.parse(localStorage.getItem('userData')).level === 0;
+
+
+  dataSource;
+  columnsToDisplay = ['id', 'title', 'created', 'ticket', 'user'];
+  expandedElement: Comment | null;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -47,7 +61,20 @@ export class TicketDetailComponent implements OnInit {
       this.dataService.getMachineList().subscribe(data => {
         this.machine = data.find(x => x.id === this.ticket.machine);
       });
+
+      this.dataService.getComments()
+        .subscribe((data: Comment[]) => {
+          this.dataSource = data;
+          this.dataSource = this.dataSource
+            .filter(x => x.ticket === this.ticket.id)
+            .map(x => {
+              x.created = new Date(x.created).toDateString();
+              return x;
+            });
+        });
     });
+
+
   }
 
   formatTime(time) {
@@ -65,4 +92,8 @@ export class TicketDetailComponent implements OnInit {
   edit() {
     this.router.navigate(['/app/ticket-edit/' + String(this.route.snapshot.paramMap.get('id'))]);
   }
+
+
 }
+
+
