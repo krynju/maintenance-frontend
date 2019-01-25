@@ -3,11 +3,11 @@
     <mat-card-header fxLayout="row" fxLayoutAlign="flex-start baseline">
       <h1 fxFlex>Welcome back {{username}}</h1>
       <h2>
-        There are
+        {{text[0]}}
         <mat-icon [inline]="true" fxFlex style="padding-left: 2px">receipt</mat-icon>
-        {{activeTicketCount}} tickets open throughout
+        {{activeTicketCount}} {{text[1]}}
         <mat-icon [inline]="true" fxFlex style="padding-left: 2px">report</mat-icon>
-        {{activeFailureCount}} failure reports
+        {{activeFailureCount}} {{text[2]}}
       </h2>
     </mat-card-header>
   </mat-card-content>

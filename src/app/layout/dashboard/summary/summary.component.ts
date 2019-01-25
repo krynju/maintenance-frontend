@@ -7,10 +7,16 @@ import {DataService} from '../../../shared/services/data.service';
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
+  @Input() mode;
   @Input() elo;
   activeFailureCount: number;
   activeTicketCount: number;
   username = 'user';
+
+  textAdmin = ['There are', 'tickets open throughout', 'failure reports'];
+  textUser = ['You are assigned to', 'tickets open throughout', 'failure reports'];
+
+  text = this.textUser;
 
   constructor(
     private dataService: DataService,
@@ -18,6 +24,9 @@ export class SummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.mode) {
+      this.text = this.textAdmin;
+    }
     if (localStorage.getItem('userData')) {
       this.username = JSON.parse(localStorage.getItem('userData')).firstName;
     }

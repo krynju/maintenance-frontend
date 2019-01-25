@@ -1,16 +1,18 @@
 <div fxLayout="column">
-  <app-summary class="vertical_card"></app-summary>
+  <app-summary [mode]="mode" class="vertical_card"></app-summary>
   <app-ticket-list
     [filterType]="'open-only'"
     [paginationSizes]="[5,10,15]"
-    [title_in]="'Open tickets'"
+    [mode]="mode"
+    [title_in]="tickettext"
     class="vertical_card">
   </app-ticket-list>
 
   <app-failure-list
     [filterType]="'open-only'"
     [paginationSizes]="[5,10,15]"
-    [title_in]="'Open failures'"
+    [mode]="mode"
+    [title_in]="failuretext"
     class="vertical_card">
 
   </app-failure-list>

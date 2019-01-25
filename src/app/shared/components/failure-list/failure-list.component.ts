@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./failure-list.component.css']
 })
 export class FailureListComponent implements OnInit {
+  @Input() mode;
   @Input() title_in = 'Failures';
   @Input() paginationSizes = [5, 10, 20];
   @Input() filterType = 'none';
@@ -30,26 +31,51 @@ export class FailureListComponent implements OnInit {
   ngOnInit() {
     this.failureListTableData.paginator = this.paginator;
     this.failureListTableData.sort = this.sort;
-    if (this.filterType === 'open-only') {
-      this.dataService.getActiveFailureList()
-        .subscribe(data => {
-          data = data.map(obj => {
-            obj.created = moment(obj.created).format('LLL');
-            return obj;
+    if (this.mode) {
+      if (this.filterType === 'open-only') {
+        this.dataService.getActiveFailureList()
+          .subscribe(data => {
+            data = data.map(obj => {
+              obj.created = moment(obj.created).format('LLL');
+              return obj;
+            });
+            this.failureList = data;
+            this.failureListTableData.data = this.failureList;
           });
-          this.failureList = data;
-          this.failureListTableData.data = this.failureList;
-        });
+      } else {
+        this.dataService.getFailureList()
+          .subscribe(data => {
+            data = data.map(obj => {
+              obj.created = moment(obj.created).format('LLL');
+              return obj;
+            });
+            this.failureList = data;
+            this.failureListTableData.data = this.failureList;
+          });
+      }
     } else {
-      this.dataService.getFailureList()
-        .subscribe(data => {
-          data = data.map(obj => {
-            obj.created = moment(obj.created).format('LLL');
-            return obj;
-          });
-          this.failureList = data;
-          this.failureListTableData.data = this.failureList;
+
+      this.dataService.getFailureList().subscribe(data => {
+        data = data.map(obj => {
+          obj.created = moment(obj.created).format('LLL');
+          return obj;
         });
+
+
+        this.dataService.getTicketList().subscribe(data3 => {
+          this.dataService.getAssignmentList()
+            .subscribe(data2 => {
+              this.failureList = data.filter(x => {
+                return x.id === data3.find(tede => {
+                  return data2.find(re => {
+                    return re.user === JSON.parse(localStorage.getItem('userData')).id;
+                  }).ticket === tede.id;
+                }).id;
+              });
+              this.failureListTableData.data = this.failureList;
+            });
+        });
+      });
     }
   }
 

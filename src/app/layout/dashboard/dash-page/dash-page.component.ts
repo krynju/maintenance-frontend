@@ -10,12 +10,18 @@ import {Ticket} from '../../../shared/models/ticket';
 })
 export class DashPageComponent implements OnInit {
   ticketList: Ticket[];
+  tickettext = 'Open tickets';
+  failuretext = 'Open failures';
+  mode: any = JSON.parse(localStorage.getItem('userData')).level === 0;
 
   constructor(private userInfoService: UserInfoService) {
   }
 
   ngOnInit() {
-
+    if (!this.mode) {
+      this.tickettext = 'Assigned tickets';
+      this.failuretext = 'Connected failures';
+    }
   }
 
 }
