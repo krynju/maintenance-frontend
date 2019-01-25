@@ -31,6 +31,9 @@ export class TicketDetailComponent implements OnInit {
   dataSource;
   columnsToDisplay = ['id', 'title', 'created', 'ticket', 'user'];
   expandedElement: Comment | null;
+  title: any;
+  description: any;
+
 
 
   constructor(
@@ -67,6 +70,7 @@ export class TicketDetailComponent implements OnInit {
           this.dataSource = data;
           this.dataSource = this.dataSource
             .filter(x => x.ticket === this.ticket.id)
+            .sort((x, y) => new Date(x).valueOf() - new Date(y).valueOf())
             .map(x => {
               x.created = new Date(x.created).toDateString();
               return x;
@@ -93,6 +97,18 @@ export class TicketDetailComponent implements OnInit {
     this.router.navigate(['/app/ticket-edit/' + String(this.route.snapshot.paramMap.get('id'))]);
   }
 
+  addComment() {
+    if (!!this.ticket && !!this.description) {
+      this.dataService.putComment({
+        'title': String(this.title), 'content': String(this.description),
+        'ticket': this.ticket.id, 'user': JSON.parse(localStorage.getItem('userData')).code
+      })
+        .subscribe(data => {
+          console.log('added comment');
+          this.getData();
+        });
+    }
+  }
 
 }
 
