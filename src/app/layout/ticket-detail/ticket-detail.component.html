@@ -1,6 +1,9 @@
 <mat-card>
   <mat-card-header fxLayout="row">
     <h1 fxFlex fxGrow="10">Viewing ticket {{ticket.name}}</h1>
+    <button (click)="delete()" *ngIf="allowedFlag" fxFlex mat-button>
+      <mat-icon>delete</mat-icon>
+    </button>
     <button (click)="edit()" *ngIf="allowedFlag" fxFlex mat-button>
       <mat-icon>edit</mat-icon>
     </button>

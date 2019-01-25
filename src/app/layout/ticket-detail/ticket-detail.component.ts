@@ -110,6 +110,11 @@ export class TicketDetailComponent implements OnInit {
     }
   }
 
+  delete() {
+    this.dataService.deleteTicket(this.ticket).subscribe(() => this.location.back());
+  }
+
+
 }
 
 

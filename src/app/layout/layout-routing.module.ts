@@ -20,10 +20,9 @@ const routes: Routes = [
       {path: 'failure-logs', loadChildren: './failure-history/failure-history.module#FailureHistoryModule'},
       {path: 'ticket/:id', component: TicketDetailComponent},
       {path: 'ticket-edit/:id', canActivate: [AuthGuardLevel], component: TicketEditComponent},
-      {path: 'ticket-edit/:id', component: TicketEditComponent},
       {path: 'ticket-create', component: TicketCreateComponent},
       {path: 'failure-create', component: FailureCreateComponent},
-      {path: 'failure-edit/:id', component: FailureEditComponent},
+      {path: 'failure-edit/:id', canActivate: [AuthGuardLevel], component: FailureEditComponent},
       {path: 'failure/:id', component: FailureDetailComponent},
     ]
   },

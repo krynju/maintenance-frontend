@@ -24,6 +24,14 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-select [(ngModel)]="ticket.status" placeholder="Status">
+          <mat-option value="oczekuje na realizacje">Waiting</mat-option>
+          <mat-option value="w trakcie realizacji">In progress</mat-option>
+          <mat-option value="zakończone">Resolved</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-select [(ngModel)]="ticket.machine" placeholder="Machine">
           <mat-option *ngFor="let machine of machines" [value]="machine.id">
             {{machine.name}}
