@@ -13,6 +13,7 @@ import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
 import { TicketCreateComponent } from './ticket-create/ticket-create.component';
 import { FailureCreateComponent } from './failure-create/failure-create.component';
 import { FailureEditComponent } from './failure-edit/failure-edit.component';
+import { FailureDetailComponent } from './failure-detail/failure-detail.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { FailureEditComponent } from './failure-edit/failure-edit.component';
     TicketCreateComponent,
     FailureCreateComponent,
     FailureEditComponent,
+    FailureDetailComponent,
   ],
   exports: []
 })

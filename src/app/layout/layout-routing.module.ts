@@ -7,6 +7,7 @@ import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
 import {TicketCreateComponent} from './ticket-create/ticket-create.component';
 import {FailureCreateComponent} from './failure-create/failure-create.component';
 import {FailureEditComponent} from './failure-edit/failure-edit.component';
+import {FailureDetailComponent} from './failure-detail/failure-detail.component';
 import {AuthGuardLevel} from '../shared/guard/auth.guard.level';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'ticket-create', component: TicketCreateComponent},
       {path: 'failure-create', component: FailureCreateComponent},
       {path: 'failure-edit/:id', component: FailureEditComponent},
+      {path: 'failure-detail/:id', component: FailureDetailComponent},
     ]
   },
 
