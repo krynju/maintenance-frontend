@@ -4,7 +4,7 @@
   Krystian Guliński
 % 4. stycznia 2019
 ---
-geometry: margin=3cm
+geometry: margin=2cm
 lang: pl
 toc-depth: 2
 ---
@@ -30,6 +30,7 @@ Utworzyliśmy endpointy `/assignments`, `/failures`, `/machines`, `/tickets`, `/
 * `GET` -- pobieranie
 * `PUT` -- wstawianie
 * `PATCH` -- aktualizowanie
+* `DELETE` -- usuwanie
 
 ### Node.js
 
@@ -70,5 +71,29 @@ Platforma ułatwiająca tworzenie aplikacji webowych. Jest to bardzo rozbudowana
 ![](resources/reactivex.png){ height=2cm }
   
 Biblioteka wspomagająca programowanie asynchroniczne. Jest polecana przez twórców *Angular* oraz silnie związana z całym systemem. W naszej aplikacji wykorzystujemy tylko część jej potencjału. Korzystamy z niej głównie do obsługi zapytań do warstwy danych. Jest to standardowy sposób rozwiązania problemu, który polega na tym, że serwer potrzebuje czasu na udzielenie odpowiedzi, nie dzieje się to natychmiast, a w tym czasie aplikacja powinna ciągle pozwalać użytkownikowi wchodzenie z nią w interakcję. 
-  
+
+\newpage
+
 # Zrzuty ekranu
+
+![Ekran logowania](resources/login.png){ height=45% }
+
+![Konsola kierownika](resources/admin_ss_home.png){ height=45% }
+
+![Konsola pracownika](resources/user_ss_home.png){ height=45% }
+
+![Historia zgłoszeń](resources/admin_ss_tickets.png){ height=45% }
+
+![Historia awarii](resources/admin_ss_failure.png){ height=45% }
+
+![Szczegółowy widok zgłoszenia (widoczne przyciski administratora: edycja i usuwanie)](resources/admin_ss_ticket_detail.png){ height=45% }
+
+![Szczegółowy widok awarii (widoczne przyciski administratora: edycja i usuwanie)](resources/admin_ss_failure_detail.png){ height=45% }
+
+![Widok edycji zgłoszenia](resources/admin_ss_ticket_edit.png){ height=45% }
+
+![Widok edycji awarii](resources/admin_ss_failure_edit.png){ height=45% }
+
+![Widok tworzenia zgłoszeń](resources/admin_ss_ticket_create.png){ height=45% }
+
+![Widok tworzenia awarii](resources/admin_ss_failure_create.png){ height=45% }
