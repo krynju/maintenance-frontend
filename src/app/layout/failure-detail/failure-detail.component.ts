@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class FailureDetailComponent implements OnInit {
   failure: Failure;
+  allowedFlag: boolean = JSON.parse(localStorage.getItem('userData')).level === 0;
 
   constructor(
     private dataService: DataService,

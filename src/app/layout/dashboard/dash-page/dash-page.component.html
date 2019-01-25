@@ -1,5 +1,13 @@
 <div fxLayout="column">
   <app-summary class="vertical_card"></app-summary>
+
+  <mat-card class="vertical_card add_buttons">
+    <mat-card-content>
+      <button routerLink="/app/failure-create" mat-raised-button color="primary">Add a failure</button>
+      <button routerLink="/app/ticket-create" mat-raised-button color="accent">Add a ticket</button>
+    </mat-card-content>
+  </mat-card>
+
   <app-ticket-list
     [filterType]="'open-only'"
     [paginationSizes]="[5,10,15]"

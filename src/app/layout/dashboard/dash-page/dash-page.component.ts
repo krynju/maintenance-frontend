@@ -6,7 +6,7 @@ import {Ticket} from '../../../shared/models/ticket';
 @Component({
   selector: 'app-dash-page',
   templateUrl: './dash-page.component.html',
-  styleUrls: ['./dash-page.component.css']
+  styleUrls: ['./dash-page.component.scss']
 })
 export class DashPageComponent implements OnInit {
   ticketList: Ticket[];
