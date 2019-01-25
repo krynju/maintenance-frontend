@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DataService} from '../../services/data.service';
 import {Failure} from '../../models/failure';
 import * as moment from 'moment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-failure-list',
@@ -19,7 +20,7 @@ export class FailureListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   applyFilter(filterValue: string) {
@@ -50,6 +51,10 @@ export class FailureListComponent implements OnInit {
           this.failureListTableData.data = this.failureList;
         });
     }
+  }
+
+  goToDetails(row: any) {
+    this.router.navigate(['/app/failure/' + String(row.id)]);
   }
 
 }

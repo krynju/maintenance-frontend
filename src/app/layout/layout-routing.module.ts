@@ -24,7 +24,7 @@ const routes: Routes = [
       {path: 'ticket-create', component: TicketCreateComponent},
       {path: 'failure-create', component: FailureCreateComponent},
       {path: 'failure-edit/:id', component: FailureEditComponent},
-      {path: 'failure-detail/:id', component: FailureDetailComponent},
+      {path: 'failure/:id', component: FailureDetailComponent},
     ]
   },
 
