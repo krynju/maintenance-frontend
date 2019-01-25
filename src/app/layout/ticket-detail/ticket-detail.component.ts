@@ -101,7 +101,7 @@ export class TicketDetailComponent implements OnInit {
     if (!!this.ticket && !!this.description) {
       this.dataService.putComment({
         'title': String(this.title), 'content': String(this.description),
-        'ticket': this.ticket.id, 'user': JSON.parse(localStorage.getItem('userData')).code
+        'ticket': this.ticket.id, 'user': JSON.parse(localStorage.getItem('userData')).id
       })
         .subscribe(data => {
           console.log('added comment');
