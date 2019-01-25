@@ -1,4 +1,4 @@
-export class Machine {
+export interface Machine {
   id: number;
   name: string;
   status: string;

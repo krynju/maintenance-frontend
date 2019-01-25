@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Machine} from '../models/machine';
 import {Failure} from '../models/failure';
+import {Assignment} from '../models/assignment';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,10 @@ export class DataService {
 
   putComment(bod) {
     return this.http.put(environment.BACKEND_LONG_IP + '/comments', bod);
+  }
+
+  getAssignmentList() {
+    return this.http.get<Assignment[]>(environment.BACKEND_LONG_IP + '/assignments');
   }
 
 }
