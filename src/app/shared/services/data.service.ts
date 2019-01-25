@@ -33,6 +33,10 @@ export class DataService {
     return this.http.put(environment.BACKEND_LONG_IP + '/failures', obj, {responseType: 'text'});
   }
 
+  patchFailure(obj) {
+    return this.http.patch(environment.BACKEND_LONG_IP + '/failures', obj, {responseType: 'text'});
+  }
+
   patchTicket(obj) {
     return this.http.patch(environment.BACKEND_LONG_IP + '/tickets', obj, {responseType: 'text'});
   }

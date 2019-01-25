@@ -12,6 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import {TicketEditComponent} from './ticket-edit/ticket-edit.component';
 import { TicketCreateComponent } from './ticket-create/ticket-create.component';
 import { FailureCreateComponent } from './failure-create/failure-create.component';
+import { FailureEditComponent } from './failure-edit/failure-edit.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FailureCreateComponent } from './failure-create/failure-create.componen
     TicketDetailComponent,
     TicketCreateComponent,
     FailureCreateComponent,
+    FailureEditComponent,
   ],
   exports: []
 })
