@@ -93,6 +93,10 @@ export class TicketDetailComponent implements OnInit {
     this.router.navigate(['/app/ticket-edit/' + String(this.route.snapshot.paramMap.get('id'))]);
   }
 
+  delete() {
+    this.dataService.deleteTicket(this.ticket).subscribe(() => this.location.back());
+  }
+
 
 }
 

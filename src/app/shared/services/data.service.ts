@@ -66,4 +66,12 @@ export class DataService {
     return this.http.get<Assignment[]>(environment.BACKEND_LONG_IP + '/assignments');
   }
 
+  deleteFailure(obj) {
+    return this.http.delete(environment.BACKEND_LONG_IP + `/failures/${obj.id}`, {responseType: 'text'});
+  }
+
+  deleteTicket(obj) {
+    return this.http.delete(environment.BACKEND_LONG_IP + `/tickets/${obj.id}`, {responseType: 'text'});
+  }
+
 }

@@ -71,4 +71,16 @@ router.patch('/', (req, res) => {
   })
 });
 
+router.delete('/:id', (req, res) => {
+  db.then(connection => connection.execute(
+    `DELETE FROM KGULINSK."awarie" WHERE "id_awaria" = :v0`,
+    [req.params['id']],
+  )).then((result) => {
+    res.sendStatus(200);
+  }).catch((err) => {
+    res.sendStatus(400);
+    console.log(err);
+  })
+});
+
 module.exports = router;
